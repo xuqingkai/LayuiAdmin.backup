@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029) -->
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>LayIM 前端文档</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="./LayIM 前端文档_files/font_24081_60slu02pimt.css">
+  <link rel="stylesheet" href="./LayIM 前端文档_files/layui.css">
+  <link rel="stylesheet" href="./LayIM 前端文档_files/global.css" charset="utf-8">
+  <link rel="stylesheet" href="./LayIM 前端文档_files/global(1).css" charset="utf-8">
+  <link rel="stylesheet" href="./LayIM 前端文档_files/docs.css" charset="utf-8">
+  <style>
+    .fly-footer {
+      border: none;
+    }
+  </style>
+  <link id="layuicss-laydate" rel="stylesheet" href="./LayIM 前端文档_files/laydate.css" media="all">
+  <link id="layuicss-layer" rel="stylesheet" href="./LayIM 前端文档_files/layer.css" media="all">
+  <link id="layuicss-skincodecss" rel="stylesheet" href="./LayIM 前端文档_files/code.css" media="all">
+  <script src="./LayIM 前端文档_files/getjs_bdtj"></script>
+  <script charset="utf-8" src="./LayIM 前端文档_files/insert_bdtj"></script>
+  <script src="./LayIM 前端文档_files/hm.js.下载"></script>
+</head>
+
+<body class="fly-body-docs">
+  <div class="layui-header header header-docs" style="background-color: #24262F;">
+    <div class="layui-container"> <a class="logo" href="https://www.layui.com/"> <img src="./LayIM 前端文档_files/logo.png"
+          alt="layui"> </a>
+      <div class="layui-form component" lay-filter="LAY-site-header-component"></div>
+
+    </div>
+  </div>
+  <!--[if lt IE 9]>  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script><![endif]-->
+  <div class="layui-container">
+    <div class="fly-docs-container">
+      <div class="fly-docs-info"> <span>更新：3天前</span> <span>阅读：2214</span> </div>
+      <h1 class="fly-docs-title">LayIM 前端文档</h1>
+      <div class="layui-text fly-md-text" data-doc="0.0009005256081947831">
+        <p>当前文档适用于 LayIM PC 端版本
+        </p>
+        <blockquote>
+          <p>LayIM 是基于 layui 的一款用于开发网页端聊天系统的纯静态 UI 界面解决方案，采用 HTML、CSS、JavaScript
+            编写，其包含的只是一套前端源代码素材和相关的模拟示例，不具备后台程序以数据库存储等功能。因此实际使用时，需要自己开发后端语言或对接云服务平台（如：融云、环信等）。</p>
+        </blockquote>
+        <div class="fly-md-dir">
+          <ul>
+            <li><a href="#start">开始使用</a></li>
+            <li><a href="#config">初始化配置</a></li>
+            <li><a href="#init">init数据格式</a></li>
+            <li><a href="#members">获取群员</a></li>
+            <li><a href="#uploadImage">上传图片/文件</a></li>
+            <li><a href="#tool">扩展工具栏</a></li>
+            <li><a href="#msgbox">消息盒子</a></li>
+            <li><a href="#find">查找页面</a></li>
+            <li><a href="#log">更多聊天记录</a></li>
+            <li><a href="#text">富文本内容格式</a></li>
+            <li><a href="#WebSocket">WebSocket</a></li>
+            <li><a href="#on">ready事件</a></li>
+            <li><a href="#ononline">监听在线状态切换</a></li>
+            <li><a href="#onsign">监听修改签名</a></li>
+            <li><a href="#onsetSkin">监听更换背景皮肤</a></li>
+            <li><a href="#onsendMessage">监听发送的消息</a></li>
+            <li><a href="#ongetMessage">监听接受的消息</a></li>
+            <li><a href="#onmembers">监听查看群员</a></li>
+            <li><a href="#onchatChange">监听聊天窗口切换</a></li>
+            <li><a href="#chat">自定义聊天窗口</a></li>
+            <li><a href="#setChatStatus">更新当前会话状态</a></li>
+            <li><a href="#add">弹出添加面板</a></li>
+            <li><a href="#setFriendGroup">好友分组面板</a></li>
+            <li><a href="#addList">添加好友/群到主面板</a></li>
+            <li><a href="#removeList">移除主面板的好友/群</a></li>
+            <li><a href="#setFriendStatus">好友置灰和取消</a></li>
+            <li><a href="#cache">获取缓存</a></li>
+            <li><a href="#dellocal">删除本地记录</a></li>
+          </ul>
+        </div>
+        <p><a name="start"> </a></p>
+        <h2>开始使用</h2>
+        <p>LayIM 是基于 layui 模块体系的扩展组件。使用时，将您获得的压缩包解压，将文件放入你的项目后，不用再对其代码做任何修改（方便下次升级）。然后您只需引入下述两个文件即可。</p>
+        <pre><code>./layui/css/layui.css
+./layui/layui.js
+</code></pre>
+        <p>一个最直接的例子是：</p>
+        <pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;title&gt;LayIM 测试&lt;/title&gt;
+&lt;link rel="stylesheet" href="./layui/css/layui.css" media="all"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;script src="./layui/layui.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+//以下为 layim 最新版写法
+layui.config({
+  layimPath: '../dist/' //配置 layim.js 所在目录
+  ,layimAssetsPath: '../dist/layim-assets/' //layim 资源文件所在目录
+}).extend({
+  layim: layui.cache.layimPath + 'layim' //配置 layim 组件所在的路径
+}).use('layim', function(layim){ //加载组件
+  //先来个客服模式压压精
+  layim.config({
+    brief: true //是否简约模式（如果true则不显示主面板）
+  }).chat({
+    name: '一个新窗口'
+    ,type: 'friend'
+    ,avatar: 'http://tp1.sinaimg.cn/5619439268/180/40030060651/1'
+    ,id: -2
+  });
+});
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+        <p>通过上述方式，便可成功加载 layim。当然，你仅仅只是看到了一个"新窗口"的聊天面板，这等同于：Hello World!<br>
+          向“客服姐姐”问好后就忘了它吧，这份文档才刚刚开始。</p>
+        <p><a name="config"> </a></p>
+        <h2>初始化配置</h2>
+        <p>一个你必须认识的方法：layim.config(options)<br>
+          控制着许多重要的配置，基本上一个完整LayIM实例的构成由它而开始，它允许你自由设定以下参数：</p>
+        <pre><code>layui.config({
+  layimPath: '../dist/' //配置 layim.js 所在目录
+  ,layimAssetsPath: '../dist/layim-assets/' //layim 资源文件所在目录
+}).extend({
+  layim: layui.cache.layimPath + 'layim' //配置 layim 组件所在的路径
+}).use('layim', function(layim){ //加载组件
+  //基础配置
+  layim.config({
+ 
+    init: {} //获取主面板列表信息，下文会做进一步介绍
+ 
+    //获取群员接口（返回的数据格式见下文）
+    ,members: {
+      url: '' //接口地址（返回的数据格式见下文）
+      ,type: 'get' //默认get，一般可不填
+      ,data: {} //额外参数
+    }
+    
+    //上传图片接口（返回的数据格式见下文），若不开启图片上传，剔除该项即可
+    ,uploadImage: {
+      url: '' //接口地址
+      ,type: 'post' //默认post
+    } 
+    
+    //上传文件接口（返回的数据格式见下文），若不开启文件上传，剔除该项即可
+    ,uploadFile: {
+      url: '' //接口地址
+      ,type: 'post' //默认post
+    }
+    //扩展工具栏，下文会做进一步介绍（如果无需扩展，剔除该项即可）
+    ,tool: [{
+      alias: 'code' //工具别名
+      ,title: '代码' //工具名称
+      ,icon: '' //工具图标，参考图标文档
+    }]
+    
+    ,msgbox: layui.cache.dir + 'css/modules/layim/html/msgbox.html' //消息盒子页面地址，若不开启，剔除该项即可
+    ,find: layui.cache.dir + 'css/modules/layim/html/find.html' //发现页面地址，若不开启，剔除该项即可
+    ,chatLog: layui.cache.dir + 'css/modules/layim/html/chatlog.html' //聊天记录页面地址，若不开启，剔除该项即可
+  });
+}); 
+</code></pre>
+        <p>layim.config(options)的更多可选配置项见下表：</p>
+        <table class="layui-table">
+          <colgroup>
+            <col width="100">
+            <col width="100">
+            <col width="100">
+            <col>
+          </colgroup>
+          <thead>
+            <tr>
+              <th>可选项</th>
+              <th>默认值</th>
+              <th>类型</th>
+              <th>用途</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>brief</td>
+              <td>false</td>
+              <td>boolean</td>
+              <td>是否简约模式，如果设为 true，则主面板不会显示。一般可用于客服</td>
+            </tr>
+            <tr>
+              <td>title</td>
+              <td>我的LayIM</td>
+              <td>string</td>
+              <td>主面板最小化后显示的名称</td>
+            </tr>
+            <tr>
+              <td>min</td>
+              <td>false</td>
+              <td>boolean</td>
+              <td>用于设定主面板是否在页面打开时，始终最小化展现</td>
+            </tr>
+            <tr>
+              <td>right</td>
+              <td>0px</td>
+              <td>string</td>
+              <td>用于设定主面板右偏移量。该参数可避免遮盖你页面右下角已经的bar</td>
+            </tr>
+            <tr>
+              <td>minRight</td>
+              <td>无</td>
+              <td>string</td>
+              <td>用户控制聊天面板最小化时、及新消息提示层的相对right的px坐标。<br>如：minRight: '200px'</td>
+            </tr>
+            <tr>
+              <td>initSkin</td>
+              <td>空字符</td>
+              <td>string</td>
+              <td>设置初始背景，默认不开启。可设置./css/modules/layim/skin目录下的图片文件名
+                <br>如：initSkin: '5.jpg'
+              </td>
+            </tr>
+            <tr>
+              <td>isAudio</td>
+              <td>false</td>
+              <td>boolean</td>
+              <td>是否开启聊天工具栏音频</td>
+            </tr>
+            <tr>
+              <td>isVideo</td>
+              <td>false</td>
+              <td>boolean</td>
+              <td>是否开启开启聊天工具栏视频</td>
+            </tr>
+            <tr>
+              <td>notice</td>
+              <td>false</td>
+              <td>boolean</td>
+              <td>是否开启桌面消息提醒，即在浏览器之外的提醒</td>
+            </tr>
+            <tr>
+              <td>voice</td>
+              <td>default.mp3</td>
+              <td>string/boolean</td>
+              <td>设定消息提醒的声音文件（所在目录：./layui/css/modules/layim/voice/）<br>若不开启，设置 false 即可</td>
+            </tr>
+            <tr>
+              <td>isfriend</td>
+              <td>true</td>
+              <td>boolean</td>
+              <td>是否开启好友</td>
+            </tr>
+            <tr>
+              <td>isgroup</td>
+              <td>true</td>
+              <td>boolean</td>
+              <td>是否开启群组</td>
+            </tr>
+            <tr>
+              <td>maxLength</td>
+              <td>3000</td>
+              <td>number</td>
+              <td>可允许的消息最大字符长度</td>
+            </tr>
+            <tr>
+              <td>skin</td>
+              <td>null</td>
+              <td>object</td>
+              <td>拓展背景，如：
+                <pre>skin: [ 
+  'http://xxx.com/skin.jpg', 
+  'b.png'
+  …
+]             
+            </pre>
+              </td>
+            </tr>
+            <tr>
+              <td>copyright</td>
+              <td>false</td>
+              <td>boolean</td>
+              <td>是否授权。如果非授权获得，或将LayIM应用在第三方，建议保留，即不设置。</td>
+            </tr>
+          </tbody>
+        </table>
+        <p><a name="init"> </a></p>
+        <h2>init数据格式</h2>
+        <p>通过layim.config来设定init参数可获得：我的信息、好友列表、群组列表。你可以采用Ajax配置方式，以及直接赋值列表数据。</p>
+        <pre><code>/获取主面板列表信息
+init: {
+  url: '' //接口地址（返回的数据格式见下文）
+  ,type: 'get' //默认get，一般可不填
+  ,data: {} //额外参数
+}  
+</code></pre>
+        <p>那么该接口所返回的信息（response）应该严格按照下述的 JSON 格式：</p>
+        <pre><code>{
+  "code": 0 //0表示成功，其它表示失败
+  ,"msg": "" //失败信息
+  ,"data": {
+  
+    //我的信息
+    "mine": {
+      "username": "纸飞机" //我的昵称
+      ,"id": "100000" //我的ID
+      ,"status": "online" //在线状态 online：在线、hide：隐身
+      ,"sign": "在深邃的编码世界，做一枚轻盈的纸飞机" //我的签名
+      ,"avatar": "a.jpg" //我的头像
+    }
+    
+    //好友列表
+    ,"friend": [{
+      "groupname": "前端码屌" //好友分组名
+      ,"id": 1 //分组ID
+      ,"list": [{ //分组下的好友列表
+        "username": "贤心" //好友昵称
+        ,"id": "100001" //好友ID
+        ,"avatar": "a.jpg" //好友头像
+        ,"sign": "这些都是测试数据，实际使用请严格按照该格式返回" //好友签名
+        ,"status": "online" //若值为offline代表离线，online或者不填为在线
+      }, …… ]
+    }, …… ]
+    
+    //群组列表
+    ,"group": [{
+      "groupname": "前端群" //群组名
+      ,"id": "101" //群组ID
+      ,"avatar": "a.jpg" //群组头像
+    }, …… ]
+  }
+}
+</code></pre>
+        <p>也可以直接赋值列表数据：</p>
+        <pre><code>//里面的字段格式 同 上文的 data 中的格式。
+//注意：采用该方式时，不可以再配置url参数，否则会走Ajax模式
+init: {
+  mine: {}
+  ,friend: []
+  ,group: []
+}
+</code></pre>
+        <p><a name="members"> </a></p>
+        <h2>members 数据格式</h2>
+        <p>通过 layim.config 来设定 members 参数可获取群员列表，假设你进行了下述配置</p>
+        <pre><code>,members: {
+  url: ' '/api/im/getMembers/'
+  ,data: {}
+}     
+</code></pre>
+        <p>那么当点击群聊面板查看成员时，将会向 members 的 url 发送 Ajax 请求，并自动传递一个 id 参数（群组 id）。该接口所返回的信息（response）应该严格按照下述的 JSON 格式：</p>
+        <pre><code>{
+  "code": 0 //0表示成功，其它表示失败
+  ,"msg": "" //失败信息
+  ,"data": {
+    "list": [{
+      "username": "马小云" //群员昵称
+      ,"id": "168168" //群员id
+      ,"avatar": "http://tp4.sinaimg.cn/2145291155/180/5601307179/1" //群员头像
+      ,"sign": "让天下没有难写的代码" //群员签名
+    }, …… ]
+  }
+}  
+</code></pre>
+        <p><a name="uploadImage"> </a></p>
+        <h2>上传图片</h2>
+        <p>通过 layim.config 来设定 uploadImage 参数可进行图片上传，假设你进行了下述配置</p>
+        <pre><code>,uploadImage: {
+  url: ''
+}   
+</code></pre>
+        <p>
+          那么当点击聊天面板上传图片时，将会向uploadImage的url发送HTTP请求，进行图片上传。我们会给你传递一个name="file"的文件表单域，你接受即可。该接口所返回的信息（response）应该严格按照下述的JSON格式：
+        </p>
+        <pre><code>{
+  "code": 0 //0表示成功，其它表示失败
+  ,"msg": "" //失败信息
+  ,"data": {
+    "src": "http://cdn.xxx.com/upload/images/a.jpg" //图片url
+  }
+}      
+</code></pre>
+        <h2>上传文件</h2>
+        <p>通过layim.config来设定uploadImage参数可进行文件上传，事实上跟图片上传非常类似有木有？假设你进行了下述配置</p>
+        <pre><code>,uploadFile: {
+  url: ' ''
+}    
+</code></pre>
+        <p>
+          那么当点击聊天面板上传文件时，将会向uploadFile的url发送HTTP请求，进行文件上传。我们会给你传递一个name="file"的文件表单域，你接受即可。该接口所返回的信息（response）应该严格按照下述的JSON格式：
+        </p>
+        <pre><code>{
+  "code": 0 //0表示成功，其它表示失败
+  ,"msg": "" //失败信息
+  ,"data": {
+    "src": "http://cdn.xxx.com/upload/file/LayIM.zip" //文件url
+    ,"name": "LayIM.zip" //文件名
+  }
+}      
+</code></pre>
+        <p><a name="tool"> </a></p>
+        <h2>扩展工具栏</h2>
+        <p>你可以对聊天面板的工具栏区域进行扩展，以便实现更丰富的聊天内容。首先在你layim.config中设定好要扩展的图标、名称等信息，如：</p>
+        <pre><code>layim.config({
+  //可同时配置多个
+  tool: [{
+    alias: 'code' //工具别名
+    ,title: '代码' //工具名称
+    ,icon: '' //工具图标，参考图标文档
+  }] 
+})
+</code></pre>
+        <p>那么在工具栏中将会出现一个代码的图标，如何在点击它时实现你想要的功能呢？很简单，你只需要：</p>
+        <pre><code>//监听自定义工具栏点击，以添加代码为例
+layim.on('tool(code)', function(insert, send, obj){ //事件中的tool为固定字符，而code则为过滤器，对应的是工具别名（alias）
+  layer.prompt({
+    title: '插入代码'
+    ,formType: 2
+    ,shade: 0
+  }, function(text, index){
+    layer.close(index);
+    insert('[pre class=layui-code]' + text + '[/pre]'); //将内容插入到编辑器，主要由insert完成
+    //send(); //自动发送
+  });
+  console.log(this); //获取当前工具的DOM对象
+  console.log(obj); //获得当前会话窗口的DOM对象、基础信息
+});   
+</code></pre>
+        <p><a name="msgbox"> </a></p>
+        <h2>消息盒子</h2>
+        <p>你可以配置msgbox指向一个盒子页面地址，从而为主面板赋予各种系统消息机制。</p>
+        <pre><code>layim.config({
+  msgbox: layui.cache.dir + 'css/modules/layim/html/msgbox.html' //消息盒子页面地址，若不开启，剔除该项即可
+});     
+</code></pre>
+        <p>它指向的是我们内置的一个盒子模版（你也可以换成你自己的页面），里面写好了所有代码，你只需要按照里面的注释配置好一些接口即可。<br>
+          当你试图在盒子的图标上实时获取到最新的系统消息数时，你可以借助以下方法完成。</p>
+        <pre><code>layim.msgbox(5); //数字即为你通过websocket或者Ajax实时获取到的最新消息数量
+//它将在主面板的消息盒子icon上不断显隐提示，直到点击后自动消失
+</code></pre>
+        <p><a name="find"> </a></p>
+        <h2>查找页面</h2>
+        <p>为了避免联调的复杂性且需求不一，所以官方暂不提供该模版结构与样式，实际使用时，可移至该文件到你的项目中，对页面自行把控</p>
+        <pre><code>layim.config({
+  find: layui.cache.dir + 'css/modules/layim/html/find.html' //发现页面地址，若不开启，剔除该项即可
+});     
+</code></pre>
+        <p><a name="log"> </a></p>
+        <h2>查看更多聊天记录</h2>
+        <p>LayIM会在本地记录每个会话的最新 20
+          条记录。但一般服务端也要存储存储一份，为了避免联调的复杂性，我们并不内置更多聊天记录的展示。而是弹出一个聊天记录的layer窗口，这意味着你可以随意发挥聊天记录的页面。通过layim.config配置chatLog来指向聊天记录的URL。假设你进行了下述设定：
+        </p>
+        <pre><code>layim.config({
+  //以下为我们内置的模版，也可以换成你的任意页面。若不开启，剔除该项即可
+  chatLog: layui.cache.dir + 'css/modules/layim/html/chatlog.html' 
+});    
+</code></pre>
+        <p>那么，我们会在chatLog所对应的URL后面动态追加当前聊天窗口的ID（即好友或群组ID）和类型，如：/chat/log?id=123&amp;type=friend<br>
+          详细情况可以打开 chatlog.html 去了解，里面有我们写好的代码。</p>
+        <p><a name="text"> </a></p>
+        <h2>富文本内容格式</h2>
+        <p>LayIM的聊天多类型内容解析采用内部特定的文本格式，你可以借助它在聊天内容区域呈现多样化的内容。目前我们支持的内容如下：</p>
+        <pre><code>超链接格式：a(地址)[文本]       如：a(http://www.layui.com)[layui]   
+图片格式：img[地址]            如：img[http://cdn.layui.com/xxx/a.jpg]
+文件格式：file(地址)[文本]      如：file(http://cdn.layui.com/download/layim.zip)[layim.zip]
+音频格式：audio[地址]          如：audio[http://cdn.layui.com/xxx/a.mp3]
+视频格式：video[地址]          如：video[http://cdn.layui.com/xxx/a.avi]
+</code></pre>
+        <p><a name="WebSocket"> </a></p>
+        <h2>WebSocket</h2>
+        <p>一般来说，对接到第三方通讯平台是个更靠谱的选择，比如：环信、融云、野狗。它们都可以是 LayIM
+          的最佳拍档，你会省去许多工作。但如果你想保证绝对的数据隐私，你也可以自己搭建通讯服务。目前所有的主流Web语言都有对WebSocket做很好的支持，其中也有很多优秀的通讯框架可以任你挑选，因此万万不可畏惧它的存在，除非你真的想用Ajax轮询去解决消息I/O。WebSocket会使得你的消息接受和传递变得极其轻松，最重要的一点是，性能卓绝。WebSocket的建立非常简单：
+        </p>
+        <pre><code>layui.use('layim', function(layim){
+  
+  //建立WebSocket通讯
+  //注意：如果你要兼容ie8+，建议你采用 socket.io 的版本。下面是以原生WS为例
+  
+  var socket = new WebSocket('ws://localhost:8090');
+  
+  //发送一个消息
+  socket.send('Hi Server, I am LayIM!');
+codelayui.code
+//更多情况下，一般是传递一个JSON
+socket.send(JSON.stringify({
+  type: '' //随便定义，用于在服务端区分消息类型
+  ,data: {}
+})); 
+  //连接成功时触发
+  socket.onopen = function(){
+    socket.send('XXX连接成功'); 
+  };
+  
+  //监听收到的消息
+  socket.onmessage = function(res){
+    //res为接受到的值，如 {"emit": "messageName", "data": {}}
+    //emit即为发出的事件名，用于区分不同的消息
+  };
+  
+  另外还有onclose、onerror，分别是在链接关闭和出错时触发。
+  
+  //基本上常用的就上面几个了，是不是非一般的简单？
+  
+  
+});
+</code></pre>
+        <p><a name="on"> </a></p>
+        服务端层面，不用害怕，事情也远没有那么复杂。这些文档也许可以帮助到你：
+        <br />
+        以下案例由第三方提供（欢迎您的更多分享）：<br />
+        ● <a href="http://fly.layui.com/jie/20098/" target="_blank">分享 layim的
+          查找页面.html 一枚</a><br>
+        ● <a href="http://fly.layui.com/jie/20013/" target="_blank">LayIM 右键菜单插件
+          layui模块化</a><br>
+        ● <a href="http://fly.layui.com/jie/20020/" target="_blank">layim 实现自定义皮肤（PHP版）</a><br>
+        ● <a href="http://fly.layui.com/jie/16763/" target="_blank">解决 LayIM 在IE8下面离线状态头像没有变恢的问题</a><br>
+        ● <a href="http://fly.layui.com/jie/14991/" target="_blank">分享一个js截图在layim里实现截图上传的功能</a>
+        <h2>事件监听</h2>
+        <p>方法：layim.on(event, callback)<br>
+          用于LayIM事件监听。接受两个参数。第一个参数event即事件名，第二个参数callback即事件回调。</p>
+        <h2>ready事件</h2>
+        <p>
+          事件名：ready，用于监听LayIM初始化就绪。由于主面板的渲染，需建立在init接口请求完毕的基础上，而一些操作必须等到主面板渲染完毕后才能操作，所以这个时候就可以放入ready事件的回调体中来执行。其回调接受一个object类型的参数，携带一些基础配置信息、我的用户信息、好友/群列表信息、本地数据库信息等，调用方式：
+        </p>
+        <pre><code>layim.on('ready', function(options){
+  console.log(options);
+  //do something
+});
+//注意：以下情况不会触发 ready事件，即代码无需写在ready里面
+* 简约模式（即brief: true时）不会触发该事件
+* init直接赋值mine、friend的情况下（只有设置了url才会执行 ready 事件）
+</code></pre>
+        <p><a name="ononline"> </a></p>
+        <h2>监听在线状态切换</h2>
+        <p>事件名：online，看到主面板你的昵称后的icon么，没错，就是它。当前支持“在线”、“隐身”两种状态切换。分别以online和hide的string类型的值传递给回调参数。如：</p>
+        <pre><code>layim.on('online', function(status){
+  console.log(status); //获得online或者hide
+  
+  //此时，你就可以通过Ajax将这个状态值记录到数据库中了。
+  //服务端接口需自写。
+});  
+</code></pre>
+        <p><a name="onsign"> </a></p>
+        <h2>监听修改签名</h2>
+        <p>事件名：sign<br>
+          当主面板的签名被改动后触发，并返回新的签名</p>
+        <pre><code>layim.on('sign', function(value){
+  console.log(value); //获得新的签名
+  
+  //此时，你就可以通过Ajax将新的签名同步到数据库中了。
+});     
+</code></pre>
+        <p><a name="onsetSkin"> </a></p>
+        <h2>监听更换背景皮肤</h2>
+        <p>事件名：setSkin<br>
+          当点击更换背景皮肤时触发，返回特定目录下的图片文件名和src路径</p>
+        <pre><code>layim.on('setSkin', function(filename, src){
+  console.log(filename); //获得文件名，如：1.jpg
+  console.log(src); //获得背景路径，如：http://res.layui.com/layui/src/css/modules/layim/skin/1.jpg
+});     
+</code></pre>
+        <p><a name="onsendMessage"> </a></p>
+        <h2>监听发送的消息</h2>
+        <p>事件名：sendMessage，每当你发送一个消息，都可以通过该事件监听到。回调参数接受一个object类型的值，携带发送的聊天信息。如：</p>
+        <pre><code>layim.on('sendMessage', function(res){
+  var mine = res.mine; //包含我发送的消息及我的信息
+
+//mine的结构如下：
+{
+  avatar: "avatar.jpg" //我的头像
+  ,content: "你好吗" //消息内容
+  ,id: "100000" //我的id
+  ,mine: true //是否我发送的消息
+  ,username: "纸飞机" //我的昵称
+}
+
+  var to = res.to; //对方的信息
+
+//to的结构如下：
+{
+  avatar: "avatar.jpg"
+  ,id: "100001"
+  ,name: "贤心"
+  ,sign: "这些都是测试数据，实际使用请严格按照该格式返回"
+  ,type: "friend" //聊天类型，一般分friend和group两种，group即群聊
+  ,username: "贤心"
+}
+
+  //监听到上述消息后，就可以轻松地发送socket了，如：
+  socket.send(JSON.stringify({
+    type: 'chatMessage' //随便定义，用于在服务端区分消息类型
+    ,data: res
+  })); 
+  
+});
+</code></pre>
+        <p><a name="ongetMessage"> </a></p>
+        <h2>监听接受的消息</h2>
+        <p>事件的监听并非layim提供，而是WebSocket提供。<br>
+          检测到WebSocket事件后，执行layim的内置方法：layim.getMessage(options)<br>
+          即可显示消息到聊天面板（如果消息所指定的聊天面板没有打开，则会进入本地的消息队列中，直到指定的聊天面板被打开，方可显示。），这是一个对你有用的例子：</p>
+        <pre><code>//监听收到的聊天消息，假设你服务端emit的事件名为：chatMessage
+socket.onmessage = function(res){
+  res = JSON.parse(res);
+  if(res.emit === 'chatMessage'){
+    layim.getMessage(res.data); //res.data即你发送消息传递的数据（阅读：监听发送的消息）
+  }
+};
+ 
+//如果是来自于用户的聊天消息，它必须接受以下字段
+layim.getMessage({
+  username: "纸飞机" //消息来源用户名
+  ,avatar: "http://tp1.sinaimg.cn/1571889140/180/40030060651/1" //消息来源用户头像
+  ,id: "100000" //消息的来源ID（如果是私聊，则是用户id，如果是群聊，则是群组id）
+  ,type: "friend" //聊天窗口来源类型，从发送消息传递的to里面获取
+  ,content: "嗨，你好！本消息系离线消息。" //消息内容
+  ,cid: 0 //消息id，可不传。除非你要对消息进行一些操作（如撤回）
+  ,mine: false //是否我发送的消息，如果为true，则会显示在右方
+  ,fromid: "100000" //消息的发送者id（比如群组中的某个消息发送者），可用于自动解决浏览器多窗口时的一些问题
+  ,timestamp: 1467475443306 //服务端时间戳毫秒数。注意：如果你返回的是标准的 unix 时间戳，记得要 *1000
+});
+
+//如果是来自于系统的聊天面板的消息
+layim.getMessage({
+  system: true //系统消息
+  ,id: 1111111 //聊天窗口ID
+  ,type: "friend" //聊天窗口类型
+  ,content: '对方已掉线'
+});
+</code></pre>
+        <p><a name="onmembers"> </a></p>
+        <h2>监听查看群员</h2>
+        <p>事件名：members，在群聊面板中查看全部成员时触发，该事件返回获取群员接口（即layim.config中的members）的response信息。</p>
+        <pre><code>layim.on('members', function(data){
+  console.log(data);
+});
+</code></pre>
+        <p><a name="onchatChange"> </a></p>
+        <h2>监听聊天窗口的切换</h2>
+        <p>事件名：chatChange，坦白而言，似乎没什么卵用。不过有总比没有好。该事件返回一个object类型的参数，携带当前聊天面板的容器、基础信息等。</p>
+        <pre><code>layim.on('chatChange', function(obj){
+  console.log(obj);
+});
+</code></pre>
+        <p><a name="chat"> </a></p>
+        <h2>自定义一个聊天窗口</h2>
+        <p>方法名：layim.chat(options)，是否似曾相识，没错，我们见过文档最开始的“客服姐姐”用的就是该方法。它允许你自定义任意模式的聊天窗口，先看例子吧：</p>
+        <pre><code>//自定义聊天窗口
+layim.chat({
+  name: '张三' //名称
+  ,type: 'friend' //聊天类型
+  ,avatar: 'http://tp1.sinaimg.cn/5619439268/180/40030060651/1' //头像
+  ,id: 11111 //好友id
+})
+ 
+//自定义客服窗口
+layim.config({
+  brief: true //简约模式，不显示主面板
+}).chat({
+  name: '在线客服二' //名称
+  ,type: 'friend' //聊天类型
+  ,avatar: 'http://tp1.sinaimg.cn/5619439268/180/40030060651/1' //头像
+  ,id: -2 //定义唯一的id方便你处理信息
+});
+layim.setChatMin(); //收缩聊天面板
+
+//自定义群聊（对于想搞一个临时性的房间，貌似是挺有意思的）
+layim.chat({
+  name: 'LayIM畅聊'
+  ,type: 'group' //群组类型
+  ,avatar: 'http://tp2.sinaimg.cn/5488749285/50/5719808192/1'
+  ,id: 10000000 //定义唯一的id方便你处理信息
+  ,members: 123 //成员数，不好获取的话，可以设置为0
+});
+
+</code></pre>
+        <p>该方法结合brief: true（简约模式），可以免去较为复杂的数据配置。轻量地建立一个聊天面板。拥有较大的平台实用性。可以预见的是，它应该会成为LayIM一个露脸率最高的存在。想象一下吧，对你而言是否如此？</p>
+        <p><a name="XXX"> </a></p>
+        <h2>初始最小化聊天界面</h2>
+        <p>方法名：layim.setChatMin()，如果你在初始的状态下不想展开聊天面板（譬如悬浮的在线客服），那么该方法会派上用场，使用很简单，就不过多啰嗦了。</p>
+        <pre><code>layim.setChatMin();
+</code></pre>
+        <p><a name="setChatStatus"> </a></p>
+        <h2>更新当前会话状态</h2>
+        <p>方法名：layim.setChatStatus(str)，可用于显示：对方输入状态、在线离线状态等，如：</p>
+        <pre><code>//每次窗口打开或切换，即更新对方的状态
+layim.on('chatChange', function(res){
+  var type = res.data.type;
+  if(type === 'friend'){
+    layim.setChatStatus('&lt;span style="color:#FF5722;"&gt;在线&lt;/span&gt;'); //模拟标注好友在线状态
+  } else if(type === 'group'){
+    //模拟系统消息
+    layim.getMessage({
+      system: true //系统消息
+      ,id: 111111111
+      ,type: "group"
+      ,content: '贤心加入群聊'
+    });
+  }
+});
+</code></pre>
+        <p><a name="add"> </a></p>
+        <h2>弹出添加面板</h2>
+        <p>方法名：layim.add(data)<br>
+          执行该方法将弹出一个我们内置的添加面板，可以帮助你完成：申请添加好友、申请添加群。参数格式如下：</p>
+        <pre><code>layim.add({
+  type: 'friend' //friend：申请加好友、group：申请加群
+  ,username: 'xxx' //好友昵称，若申请加群，参数为：groupname
+  ,avatar: 'a.jpg' //头像
+  ,submit: function(group, remark, index){ //一般在此执行Ajax和WS，以通知对方
+    console.log(group); //获取选择的好友分组ID，若为添加群，则不返回值
+    console.log(remark); //获取附加信息
+    layer.close(index); //关闭改面板
+  }
+});
+</code></pre>
+        <p><a name="setFriendGroup"> </a></p>
+        <h2>好友分组面板</h2>
+        <p>方法名：layim.setFriendGroup(data)<br>
+          执行该方法将弹出一个好友分组面板，以完成将好友追加到主面板的操作：</p>
+        <pre><code>layim.setFriendGroup({
+  type: 'friend'
+  ,username: 'xxx' //好友昵称，若申请加群，参数为：groupname
+  ,avatar: 'a.jpg' //头像
+  ,group: layim.cache().friend //获取好友列表数据
+  ,submit: function(group, index){
+    //一般在此执行Ajax和WS，以通知对方已经同意申请
+    //……
+    
+    //同意后，将好友追加到主面板
+    layim.addList(data); //见下文
+  }
+});
+</code></pre>
+        <p><a name="addList"> </a></p>
+        <h2>添加好友/群到主面板</h2>
+        <p>方法名：layim.addList(options)，当你的WebSocket监听到有好友或者群新增时，需让LayIM的主面板同步添加的信息，可用该方法。先看看例子：</p>
+        <pre><code>layim.on('ready', function(res){
+  
+  
+  //监听添加列表的socket事件，假设你服务端emit的事件名为：addList
+  socket.onmessage = function(res){
+    if(res.emit === 'addList'){
+      layim.addList(res.data); //如果是在iframe页，如LayIM设定的add面板，则为 parent.layui.layim.addList(data);
+    }
+  };
+  
+  //需要特别注意的是回调返回的res
+  
+  //如果添加的是好友，res的结构必须是这样的
+{
+  type: 'friend' //列表类型，只支持friend和group两种
+  ,avatar: "a.jpg" //好友头像
+  ,username: '王小贤' //好友昵称
+  ,groupid: 2 //所在的分组id
+  ,id: "1233333312121212" //好友id
+  ,sign: "90 年代女神" //好友签名
+}
+
+//如果添加的是群组，res的结构必须是这样的
+{
+  type: 'group' //列表类型，只支持friend和group两种
+  ,avatar: "a.jpg" //群组头像
+  ,groupname: 'Angular开发' //群组名称
+  ,id: "12333333" //群组id
+}
+
+</code></pre>
+        <p><a name="removeList"> </a></p>
+        <h2>从主面板移除好友/群</h2>
+        <p>方法名：layim.removeList(options)<br>
+          当你的WebSocket监听到有好友或者群删除时，需让LayIM的主面板同步删除的信息，可用该方法。它的调用非常简单，只需要传两个key：</p>
+        <pre><code>layim.removeList({
+  type: 'friend' //或者group
+  ,id: 1238668 //好友或者群组ID
+});
+
+//如果是在iframe页，如LayIM设定的add面板，则为：
+parent.layui.layim.removeList({
+  type: 'friend' //或者group
+  ,id: 1238668 //好友或者群组ID
+});
+</code></pre>
+        <p><a name="setFriendStatus"> </a></p>
+        <h2>更新好友列表离线状态</h2>
+        <p>方法名：layim.setFriendStatus(id, type)</p>
+        <pre><code>layim.setFriendStatus(11111, 'online'); //设置指定好友在线，即头像取消置灰
+layim.setFriendStatus(11111, 'offline'); //设置指定好友在线，即头像置灰
+</code></pre>
+        <p><a name="cache"> </a></p>
+        <h2>获取缓存</h2>
+        <p>方法名：layim.cache()，获取LayIM的cache信息，返回的信息结构和ready事件获得的信息一样，不同的是，改方法始终会获取到最新的cache。</p>
+        <pre><code>//输出的信息不妨在你的Chrome控制台看看（需在引有LayIM的页面中），在此就不做列举了
+console.log(layim.cache()) 
+</code></pre>
+        <p><a name="dellocal"> </a></p>
+        <h2>删除本地记录</h2>
+        <pre><code>var cache =  layui.layim.cache();
+var local = layui.data('layim')[cache.mine.id]; //获取当前用户本地数据
+ 
+//这里以删除本地聊天记录为例
+delete local.chatlog;
+ 
+//向localStorage同步数据
+layui.data('layim', {
+  key: cache.mine.id
+  ,value: local
+});
+</code></pre>
+        <i icon="0.00011256569999859293"></i>
+      </div>
+    </div>
+  </div>
+  <div id="FLY-spread-dir" class="layui-hide"> <i class="layui-icon layui-icon-spread-left"></i></div>
+  <div class="fly-footer">
+    <p>© 2021 <a href="https://fly.layui.com/">layui.com</a> MIT license</p>
+    <p> <a href="https://github.com/sentsin/layui/" target="_blank" rel="nofollow">GitHub</a> <a
+        href="https://gitee.com/sentsin/layui" target="_blank" rel="nofollow">码云</a> <a
+        href="http://fly.layui.com/jie/2461/" target="_blank">公众号</a> <a href="http://beian.miit.gov.cn/"
+        target="_blank" rel="nofollow">赣ICP备13006272号-2</a> </p>
+    <div class="fly-union">
+      <p style="display: block; margin-bottom: 10px;"><span>感谢以下平台提供云加速支持</span></p>
+      <p> <a href="https://console.upyun.com/register/?invite=SJ0wu6g2-" target="_blank" rel="nofollow" sponsor="upyun">
+          <img src="./LayIM 前端文档_files/upyun.png"> </a> <a href="https://www.maoyuncloud.com/?from=layui"
+          target="_blank" rel="nofollow" sponsor="maoyun"> <img src="./LayIM 前端文档_files/168_1559291577683_9348.png">
+        </a> </p>
+    </div>
+  </div>
+  <script src="./LayIM 前端文档_files/layui.js.下载"></script>
+  <script>layui.cache.page = 'docs'; layui.cache.user = { username: 'oo0oo', uid: 18677568, avatar: '//res.layui.com/images/fly/avatar/4.jpg', experience: 190, sum: 2600, vip: 4, sex: '' }; layui.config({ version: "1621460610233" }).extend({ 'fly': '//res.layui.com/static/lay/modules/fly/index' }).use('fly');</script>
+  <script>var _hmt = _hmt || []; (function () { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?d214947968792b839fd669a4decaaffc"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })();</script>
+  <ul class="layui-fixbar">
+    <li class="layui-icon layui-fixbar-top" lay-type="top" style=""></li>
+  </ul>
+</body>
+
+</html>

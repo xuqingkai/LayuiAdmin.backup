@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029) -->
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>layuiAdmin std iframe版 开发者文档</title>
+  <meta name="description" content="" />
+  <link rel="stylesheet" href="./layuiAdmin std iframe版 开发者文档_files/font_24081_60slu02pimt.css" />
+  <link rel="stylesheet" href="./layuiAdmin std iframe版 开发者文档_files/layui.css" />
+  <link rel="stylesheet" href="./layuiAdmin std iframe版 开发者文档_files/global.css" charset="utf-8" />
+  <link rel="stylesheet" href="./layuiAdmin std iframe版 开发者文档_files/global(1).css" charset="utf-8" />
+  <link rel="stylesheet" href="./layuiAdmin std iframe版 开发者文档_files/docs.css" charset="utf-8" />
+  <style>
+    .fly-footer {
+      border: none;
+    }
+  </style>
+  <link id="layuicss-laydate" rel="stylesheet" href="./layuiAdmin std iframe版 开发者文档_files/laydate.css" media="all" />
+  <link id="layuicss-layer" rel="stylesheet" href="./layuiAdmin std iframe版 开发者文档_files/layer.css" media="all" />
+  <link id="layuicss-skincodecss" rel="stylesheet" href="./layuiAdmin std iframe版 开发者文档_files/code.css" media="all" />
+  <script src="./layuiAdmin std iframe版 开发者文档_files/getjs_bdtj"></script>
+  <script charset="utf-8" src="./layuiAdmin std iframe版 开发者文档_files/insert_bdtj"></script>
+  <script src="./layuiAdmin std iframe版 开发者文档_files/hm.js.下载"></script>
+</head>
+
+<body class="fly-body-docs">
+  <div class="layui-header header header-docs" style="background-color: #24262f">
+    <div class="layui-container">
+      <a class="logo" href="https://www.layui.com/">
+        <img src="./layuiAdmin std iframe版 开发者文档_files/logo.png" alt="layui" />
+      </a>
+      <div class="layui-form component" lay-filter="LAY-site-header-component"></div>
+
+    </div>
+  </div>
+  <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script
+    ><![endif]-->
+  <div class="layui-container">
+    <div class="fly-docs-container">
+      <div class="fly-docs-info">
+      </div>
+      <h1 class="fly-docs-title">layuiAdmin std iframe版 开发者文档</h1>
+      <div class="layui-text fly-md-text" data-doc="0.0009005256081947831">
+        <div class="layui-btn-container">
+          <a href="http://www.layui.com/layuiadmin/std/dist/views/" target="_blank" class="layui-btn">在线演示</a>
+        </div>
+        <br />
+        <blockquote>
+          <p>
+            layuiAdmin.std（iframe 版） 采用传统的 iframe
+            多页面开发模式，可更快速直接地开发网页管理系统模板，无需过多地学习成本，简单高效，更容易上手。
+          </p>
+        </blockquote>
+        <div class="fly-md-dir">
+          <ul>
+            <li>
+              <p>
+                <a href="#quickstart">快速上手</a>
+              </p>
+              <ul>
+                <li>
+                  <a href="#dir-desc">目录说明</a>
+                </li>
+                <li>
+                  <a href="#deploy">部署到服务端</a>
+                </li>
+                <li>
+                  <a href="#config">全局配置</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <p>
+                <a href="#base-mehod">基础方法</a>
+              </p>
+              <ul>
+                <li>
+                  <a href="#base-admin">admin模块</a>
+                </li>
+                <li>
+                  <a href="#base-view">view模块</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <p>
+                <a href="#openTabsPage">iframe 内部打开新标签</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#tabsTitle">自定义标签栏标题</a>
+              </p>
+            </li>
+            <li>
+              <p><a href="#util">实用组件</a></p>
+            </li>
+            <li>
+              <p>
+                <a href="#compatibility">兼容性</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#update">升级事项</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#build">源码构建</a>
+              </p>
+            </li>
+          </ul>
+          <hr />
+          <ul>
+            <li><a href="https://fly.layui.com/docs/2/">返回文档入口</a></li>
+          </ul>
+        </div>
+        <h2>题外</h2>
+        <ul>
+          <li>
+            该文档适用于
+            <strong>layuiAdmin.std 常规版（iframe）</strong>，阅读之前请务必确认是否与你使用的版本对应。
+          </li>
+          <li>
+            熟练掌握 layuiAdmin 的前提是熟练掌握 layui，因此除了本篇文档，
+            <a href="http://www.layui.com/doc/">layui 的文档</a>
+            也是必不可少的存在。
+          </li>
+        </ul>
+        <p><a name="quickstart"> </a></p>
+        <h2>快速上手</h2>
+        <p><a name="dir-desc"> </a></p>
+        <h3>目录说明</h3>
+        <blockquote>
+          <p>解压文件后，你将看到以下目录：</p>
+        </blockquote>
+        <ul>
+          <li>
+            <p>
+              <strong>src/</strong><br />
+              layuiAdmin 源代码，通常用于开发环境（如本地）。
+            </p>
+            <ul>
+              <li>
+                <p>
+                  <strong>src/layuiadmin/</strong>：layuiAdmin
+                  的静态资源（JS、CSS、模块碎片等）
+                </p>
+                <ul>
+                  <li>
+                    **src/layuiadmin/json/：模拟接口返回的 JSON
+                    相应信息，实际应用时可无视。
+                  </li>
+                  <li>
+                    **src/layuiadmin/layui/：layui
+                    基础框架，功能一般领先于官网提供下载的版本。
+                  </li>
+                  <li>
+                    **src/layuiadmin/lib/：layuiAdmin
+                    的核心模块，通常不建议修改。
+                  </li>
+                  <li>**src/layuiadmin/modules/：layuiAdmin 的业务模块</li>
+                  <li>**src/layuiadmin/style/：layuiAdmin 的样式文件</li>
+                  <li>
+                    **src/layuiadmin/tpl/：layuiAdmin
+                    部分区块可能用到的模版碎片
+                  </li>
+                  <li>**src/layuiadmin/config.js：全局配置文件</li>
+                </ul>
+              </li>
+              <li>
+                <p>
+                  <strong>src/views/</strong>：layuiAdmin
+                  提供的视图文件，你可以将其移动到你服务端工程的 view
+                  层中，注意修改 JS/CSS 的路径即可。
+                </p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>
+              <strong>dist/</strong><br />
+              通过 gulp 将 资源包的 src
+              目录的源代码进行构建后生成的目录（即：将 JS 和 CSS
+              文件进行了压缩等处理），通常用于线上环境。关于 gulp
+              的使用，下文也有介绍。
+            </p>
+          </li>
+        </ul>
+        <p><a name="deploy"> </a></p>
+        <h3>部署到服务端</h3>
+        <ol>
+          <li>
+            将 <em>src</em> 目录中的 <em>views</em> 文件夹整个复制到你
+            <em>服务端工程</em> 的 view 层中，通过本地 web 服务器访问（Tomcat
+            / IIS / Apache / Nginx 等）
+          </li>
+          <li>
+            确保可以访问后，修改好 HTML 文件中的 JS/CSS
+            路径，即可正常运行页面。
+          </li>
+        </ol>
+        <blockquote>
+          <p>
+            <em>iframe 常规版</em> 相比于
+            <em>单页面版</em>
+            ，无论是在目录结构还是开发模式上都要简单很多。因为单页版是接管了服务端
+            MVC 的视图层，而 iframe
+            版则将视图交给了服务端来控制和输出，可以避免鉴权的复杂程度，直接可衔接好新老项目（因为你们的大部分老项目都是采用
+            iframe 模式）。
+          </p>
+        </blockquote>
+        <p><a name="config"> </a></p>
+        <h3>全局配置</h3>
+        <p>
+          当你已经顺利在本地预览了 layuiAdmin
+          后，你一定迫不及待关注更深层的结构。假设你页面引入的是
+          <em>src</em> 目录 的 JS，你还需要关注的是 <em>src/layuiadmin/</em><br />
+          目录中的
+          <code>config.js</code>，它里面存储着所有的默认配置。你可以按照实际需求选择性修改：
+        </p>
+        <pre><code>layui.define(['laytpl', 'layer', 'element', 'util'], function(exports){
+  exports('setter', {
+    container: 'LAY_app' //容器ID
+    ,base: layui.cache.base //记录静态资源所在路径
+    ,views: layui.cache.base + 'tpl/' //动态模板所在目录
+    ,entry: 'index' //默认视图文件名
+    ,engine: '.html' //视图文件后缀名
+    ,pageTabs: true //是否开启页面选项卡功能。iframe 版推荐开启
+    
+    ,name: 'layuiAdmin'
+    ,tableName: 'layuiAdmin' //本地存储表名
+    ,MOD_NAME: 'admin' //模块事件名
+    
+    ,debug: true //是否开启调试模式。如开启，接口异常时会抛出异常 URL 等信息
+
+    //自定义请求字段
+    ,request: {
+      tokenName: false //自动携带 token 的字段名（如：access_token）。可设置 false 不携带。
+    }
+    
+    //自定义响应字段
+    ,response: {
+      statusName: 'code' //数据状态的字段名称
+      ,statusCode: {
+        ok: 0 //数据状态一切正常的状态码
+        ,logout: 1001 //登录状态失效的状态码
+      }
+      ,msgName: 'msg' //状态信息的字段名称
+      ,dataName: 'data' //数据详情的字段名称
+    }
+    
+    //扩展的第三方模块（1.7.0+ 写法）
+    ,extend: {
+      echarts: 'echarts', //第三方 echarts 核心包
+      echartsTheme: 'echartsTheme', //第三方 echarts 主题
+      layim: 'layim/layim' //layim
+    }
+    
+    //（1.7.0 之前的写法）
+    /*
+    ,extend: [
+      'echarts', //echarts 核心包
+      'echartsTheme' //echarts 主题
+    ]
+    */
+    
+    //主题配置
+    ,theme: {
+      //配色方案，如果用户未设置主题，第一个将作为默认
+      color: [{
+        main: '#20222A' //主题色
+        ,selected: '#009688' //选中色
+        ,logo: '' //logo区域背景色
+        ,header: '' //头部区域背景色
+        ,alias: 'default' //默认别名
+      }] //为了减少篇幅，更多主题此处不做列举，可直接参考 config.js
+
+      //初始的颜色索引，对应上面的配色方案数组索引
+      //如果本地已经有主题色记录，则以本地记录为优先，除非清除 LocalStorage（步骤：F12呼出调试工具→Aplication→Local Storage→选中页面地址→layuiAdmin→再点上面的X）
+      // 1.0 正式版开始新增
+      ,initColorIndex: 0
+    }
+  });
+});
+
+</code></pre>
+        <p><a name="base-mehod"> </a></p>
+        <h2>基础方法</h2>
+        <ul>
+          <li><strong>config 模块</strong></li>
+        </ul>
+        <blockquote>
+          <p>
+            你可以在任何地方通过 <code>layui.setter</code> 得到
+            <em>config.js</em> 中的配置信息。如：<code>layui.setter.base</code>
+          </p>
+        </blockquote>
+        <p><a name="base-admin"> </a></p>
+        <ul>
+          <li><strong>admin 模块</strong></li>
+        </ul>
+        <blockquote>
+          <p>var admin = layui.admin;</p>
+        </blockquote>
+        <ul>
+          <li>
+            <p>
+              <strong>admin.req(options)</strong><br />
+              Ajax 请求，用法同 $.ajax(options)，只是该方法会进行错误处理
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>admin.screen()</strong><br />
+              获取屏幕类型，根据当前屏幕大小，返回 0 - 3 的值<br />
+              0: 低于768px的屏幕<br />
+              1：768px到992px之间的屏幕<br />
+              2：992px到1200px之间的屏幕<br />
+              3：高于1200px的屏幕
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>admin.sideFlexible(status)</strong><br />
+              侧边伸缩。status 为 null：收缩；status为 “spread”：展开
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>admin.on(eventName, callback)</strong><br />
+              事件监听，下文会有讲解
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>admin.popup(options)</strong><br />
+              弹出一个 layuiAdmin 主题风格的 layer 层，参数 options 跟
+              layer.open(options) 完全相同
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>admin.popupRight(options)</strong><br />
+              在屏幕右侧呼出一个面板层。options 同上。
+            </p>
+          </li>
+        </ul>
+        <pre><code>admin.popupRight({
+  id: 'LAY-popup-right-new1' //定义唯一ID，防止重复弹出
+  ,success: function(){
+    //将 views 目录下的某视图文件内容渲染给该面板
+    layui.view(this.id).render('视图文件所在路径');
+  }
+});
+</code></pre>
+        <ul>
+          <li>
+            <p>
+              <strong>admin.resize(callback)</strong><br />
+              窗口 resize 事件处理，我们推荐你使用该方法取代 jQuery 的 resize
+              事件，以避免多页面标签下可能存在的冲突。
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>admin.fullScreen()</strong><br />
+              全屏
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>admin.exitScreen()</strong><br />
+              退出全屏
+            </p>
+          </li>
+          <li>
+            <p><strong>admin.events</strong></p>
+            <ul>
+              <li>
+                <p>
+                  admin.events.refresh()<br />
+                  刷新当前右侧区域
+                </p>
+              </li>
+              <li>
+                <p>
+                  admin.events.closeThisTabs()<br />
+                  关闭当前标签页
+                </p>
+                <blockquote>
+                  <p>注意：如果是在 iframe 页面中执行关闭，需要如下写法：</p>
+                  <blockquote>
+                    <p>parent.layui.admin.events.closeThisTabs();</p>
+                  </blockquote>
+                </blockquote>
+              </li>
+              <li>
+                <p>
+                  admin.events.closeOtherTabs()<br />
+                  关闭其它标签页
+                </p>
+              </li>
+              <li>
+                <p>
+                  admin.events.closeAllTabs()<br />
+                  关闭全部标签页
+                </p>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <p><a name="base-view"> </a></p>
+        <ul>
+          <li><strong>view 模块</strong></li>
+        </ul>
+        <blockquote>
+          <p>
+            用法同 <em>专业版 view 模块</em> （可打开 单页版文档---基础方法---view模块 中查看）
+          </p>
+        </blockquote>
+        <p><a name="openTabsPage"> </a></p>
+        <h2>在 iframe 页面内部打开新标签</h2>
+        <blockquote>
+          <p>
+            通常你会涉及一些在右侧 iframe
+            页面内部去打开一个新标签的需求，目前有以下方式可以实现
+          </p>
+        </blockquote>
+        <h3>方法一：</h3>
+        <p>直接在 a 标签上加上相关属性</p>
+        <pre><code>&lt;a lay-href="url"&gt;文本&lt;/a&gt;
+</code></pre>
+        <h3>方法二：</h3>
+        <p>调用 index 模块的相关方法</p>
+        <pre><code>parent.layui.index.openTabsPage(href, text); //这里要注意的是 parent 的层级关系
+</code></pre>
+        <p><a name="tabsTitle"> </a></p>
+        <h2>自定义标签栏标题</h2>
+        <blockquote>
+          <p>
+            每当你打开一个标签页，头部都会出现标题。它默认读取的是所点元素的文本，但是你也可以自定义标题。
+          </p>
+        </blockquote>
+        <pre><code>&lt;a lay-href="url" lay-text="自定义标题文本"&gt;默认读取的文本&lt;/a&gt;
+</code></pre>
+        <ul>
+          <li>
+            值得说明的是，只要你配置了上述的
+            <code>lay-href</code>
+            属性，就会打开一个新的标签，如果要在当前标签跳转，直接配置
+            <code>href=""</code> 属性即可。
+          </li>
+        </ul>
+        <p><a name="util"> </a></p>
+        <h2>实用组件</h2>
+        <h3>Hover 提示层</h3>
+        <p>
+          通过对元素设置 <code>lay-tips="提示内容"</code> 来开启一个 hover
+          提示，如：
+        </p>
+        <pre><code>&lt;i class="layui-icon layui-icon-tips" lay-tips="要支持的噢" lay-offset="5"&gt;&lt;/i&gt;
+</code></pre>
+        <p>
+          其中
+          <code>lay-offset</code>
+          用于定于水平偏移距离（单位px），以调整箭头让其对准元素
+        </p>
+        <p><a name="compatibility"> </a></p>
+        <h2>兼容性</h2>
+        <p>
+          layuiAdmin 使用到了 layui
+          的栅格系统，而栅格则是基于浏览器的媒体查询。ie8、9不支持。<br />
+          所以要在宿主页面（如 start/index.html ）加上下面这段保证兼容：
+        </p>
+        <pre><code class="language-html">&lt;!-- 让IE8/9支持媒体查询，从而兼容栅格 --&gt;
+&lt;!--[if lt IE 9]&gt;
+  &lt;script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"&gt;&lt;/script&gt;
+&lt;![endif]--&gt;  
+</code></pre>
+        <p><a name="update"> </a></p>
+        <h2>升级事项</h2>
+        <p>
+          从官网更新资源包后，以 src 目录为例（dist 由于是 src
+          构建后生成的目录，所以本质是和 src 一样的）<br />
+          <strong>src 目录下可以直接覆盖的有</strong>：
+        </p>
+        <blockquote>
+          <ul>
+            <li>src/json/</li>
+            <li>src/layui/</li>
+            <li>src/lib/</li>
+            <li>src/style/</li>
+          </ul>
+        </blockquote>
+        <p><strong>需要灵活调配的有</strong>：</p>
+        <blockquote>
+          <ul>
+            <li>src/modules/</li>
+            <li>src/tpl/</li>
+            <li>
+              src/config.js<br />
+              如果没有改动默认配置，事实上 config.js 也可以覆盖升级
+            </li>
+          </ul>
+        </blockquote>
+        <p>
+          开发过程中，建议同时运行两个 layuiAdmin
+          。一个是已经实际运用的，一个是 layuiAdmin 本身的 Demo。以便从 Demo
+          中获取参考和提取示例。
+        </p>
+        <p><a name="build"> </a></p>
+        <h2>源码构建</h2>
+        <blockquote>
+          <p>
+            当你在 src 目录完成开发后，你可通过 gulp 对 src
+            源码进行自动化构建，以生成用于线上环境的 dist 目录。并在 HTML
+            源代码中引入该目录的 JS/CSS。
+          </p>
+        </blockquote>
+        <p>
+          在资源包中根目录下看到的 gulpfile.js 是 layuiAdmin
+          写好的任务脚本，package.json 是任务配置文件，你只需按照以下步骤：
+        </p>
+        <ol>
+          <li>
+            step1：确保你的电脑已经安装好了
+            <a href="https://nodejs.org/en/">Node.js</a>，如果未安装，可去官网下载安装
+          </li>
+          <li>step2: 命令行安装 gulp：npm install gulp -g</li>
+          <li>
+            step3：切换到 layuiAdmin 项目根目录（即 gulpfile.js
+            所在目录），命令行安装任务所依赖的包：npm install
+          </li>
+        </ol>
+        <p>
+          安装完成后，后续只需直接执行命令：<code>gulp</code> 即可完成 src 到
+          dist 目录的构建
+        </p>
+
+        <i icon="0.00011256569999859293"></i>
+      </div>
+    </div>
+  </div>
+  <div id="FLY-spread-dir" class="layui-hide">
+    <i class="layui-icon layui-icon-spread-left"></i>
+  </div>
+  <div class="fly-footer">
+    <p>© 2021 <a href="https://fly.layui.com/">layui.com</a> MIT license</p>
+    <p>
+      <a href="https://github.com/sentsin/layui/" target="_blank" rel="nofollow">GitHub</a>
+      <a href="https://gitee.com/sentsin/layui" target="_blank" rel="nofollow">码云</a>
+      <a href="http://fly.layui.com/jie/2461/" target="_blank">公众号</a>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow">赣ICP备13006272号-2</a>
+    </p>
+    <div class="fly-union">
+      <p style="display: block; margin-bottom: 10px">
+        <span>感谢以下平台提供云加速支持</span>
+      </p>
+      <p>
+        <a href="https://console.upyun.com/register/?invite=SJ0wu6g2-" target="_blank" rel="nofollow" sponsor="upyun">
+          <img src="./layuiAdmin std iframe版 开发者文档_files/upyun.png" />
+        </a>
+        <a href="https://www.maoyuncloud.com/?from=layui" target="_blank" rel="nofollow" sponsor="maoyun">
+          <img src="./layuiAdmin std iframe版 开发者文档_files/168_1559291577683_9348.png" />
+        </a>
+      </p>
+    </div>
+  </div>
+  <script src="./layuiAdmin std iframe版 开发者文档_files/layui.js.下载"></script>
+  <script>
+    layui.cache.page = "docs";
+    layui.cache.user = {
+      username: "oo0oo",
+      uid: 18677568,
+      avatar: "//res.layui.com/images/fly/avatar/4.jpg",
+      experience: 190,
+      sum: 2600,
+      vip: 4,
+      sex: "",
+    };
+    layui
+      .config({ version: "1621460610020" })
+      .extend({ fly: "//res.layui.com/static/lay/modules/fly/index" })
+      .use("fly");
+  </script>
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d214947968792b839fd669a4decaaffc";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <ul class="layui-fixbar">
+    <li class="layui-icon layui-fixbar-top" lay-type="top" style=""></li>
+  </ul>
+</body>
+
+</html>
